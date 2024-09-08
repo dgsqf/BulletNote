@@ -1,12 +1,26 @@
+#!/usr/bin/env python
+
 from parser.Parser import Parser
 from document.Document import Document
+import click
+import glob
+import configparser
 
-filename = "notes.bullet"
+config = configparser.ConfigParser()
 
-parser = Parser(filename)
-parser.parse()
-print(parser.nodes)
+@click.command()
+@click.option("--folder",help="Folder containing your notes")
+def parse(folder):
+    config.read(folder+"bullet.ini")
+    
+    print("Searching for notes in :" +folder)
+    print(glob.glob("**/*.bullet",root_dir=folder,recursive=True))
+    for filename in glob.glob("**/*.bullet",root_dir=folder,recursive=True):
+        print(folder+filename)
+        parser = Parser(folder+filename,config)
+        parser.parse()
+        doc = Document(parser.nodes,config)
+        doc.to_html(folder+filename+".html",folder)
 
-doc = Document(parser.nodes)
-
-doc.to_html("notes.html")
+if __name__ == "__main__":
+    parse()

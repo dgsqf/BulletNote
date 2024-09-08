@@ -1,7 +1,8 @@
 from document.Nodes import Header,Link,Quote,Paragraph
 
 class Parser:
-    def __init__(self,filename) -> None:
+    def __init__(self,filename,config) -> None:
+        self.config = config
         self.filename = filename
         self.nodes = []
         pass
