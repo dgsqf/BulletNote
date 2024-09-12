@@ -1,0 +1,9 @@
+[project]
+name = "BulletNote"
+version = "0.1"
+dependencies = [
+    "click",
+    
+]
+[project.scripts]
+Bulletparse = "Parse:parse"

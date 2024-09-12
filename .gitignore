@@ -1,0 +1,7 @@
+Bullet/dist/BulletNote-0.1-py3-none-any.whl
+Bullet/dist/bulletnote-0.1.tar.gz
+Bullet/src/BulletNote.egg-info/
+# Python temp files
+__pycache__/
+*.py[cod]
+*$py.class
